@@ -18,7 +18,10 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from '@/components/listItems/listItems';
+import {
+  mainListItems,
+  secondaryListItems,
+} from '@/components/listItems/listItems';
 import Chart from '@/components/Chart/Chart';
 import Deposits from '@/components/Deposits/Deposits';
 import Orders from '@/components/Orders/Orders';
@@ -26,7 +29,11 @@ import Orders from '@/components/Orders/Orders';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Copyright(props: any) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
@@ -61,31 +68,31 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    '& .MuiDrawer-paper': {
-      position: 'relative',
-      whiteSpace: 'nowrap',
-      width: drawerWidth,
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+  '& .MuiDrawer-paper': {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    boxSizing: 'border-box',
+    ...(!open && {
+      overflowX: 'hidden',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
+        duration: theme.transitions.duration.leavingScreen,
       }),
-      boxSizing: 'border-box',
-      ...(!open && {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-          width: theme.spacing(9),
-        },
-      }),
-    },
-  }),
-);
+      width: theme.spacing(7),
+      [theme.breakpoints.up('sm')]: {
+        width: theme.spacing(9),
+      },
+    }),
+  },
+}));
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -104,8 +111,7 @@ export default function Dashboard() {
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
-            }}
-          >
+            }}>
             <IconButton
               edge="start"
               color="inherit"
@@ -114,8 +120,7 @@ export default function Dashboard() {
               sx={{
                 marginRight: '36px',
                 ...(open && { display: 'none' }),
-              }}
-            >
+              }}>
               <MenuIcon />
             </IconButton>
             <Typography
@@ -123,8 +128,7 @@ export default function Dashboard() {
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
-            >
+              sx={{ flexGrow: 1 }}>
               Dashboard
             </Typography>
             <IconButton color="inherit">
@@ -141,8 +145,7 @@ export default function Dashboard() {
               alignItems: 'center',
               justifyContent: 'flex-end',
               px: [1],
-            }}
-          >
+            }}>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
@@ -164,8 +167,7 @@ export default function Dashboard() {
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
-          }}
-        >
+          }}>
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
@@ -177,8 +179,7 @@ export default function Dashboard() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
-                  }}
-                >
+                  }}>
                   <Chart />
                 </Paper>
               </Grid>
@@ -190,8 +191,7 @@ export default function Dashboard() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
-                  }}
-                >
+                  }}>
                   <Deposits />
                 </Paper>
               </Grid>
