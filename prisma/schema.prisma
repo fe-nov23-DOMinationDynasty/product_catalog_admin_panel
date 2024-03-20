@@ -61,7 +61,7 @@ model ProductInfo {
   processor         String
   ram               String
   camera            String?
-  zoom              String
+  zoom              String?
   cell              String[]
   Product           Product[]
 }
@@ -70,4 +70,6 @@ model Description {
   id            String       @id @default(uuid())
   productInfoId String?
   ProductInfo   ProductInfo? @relation(fields: [productInfoId], references: [id])
+  title         String
+  text          String[]
 }
