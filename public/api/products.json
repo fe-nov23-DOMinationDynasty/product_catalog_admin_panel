@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Apple iPhone 7 32GB Black",
+    "fullPrice": 400,
+    "price": 375,
+    "image": "img/phones/apple-iphone-7/black/00.webp",
+    "history": [
+      {
+        "date": "2020-01-05",
+        "customerId": "11091700",
+        "amount": 2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Apple iPhone 7 Plus 32GB Black",
+    "fullPrice": 540,
+    "price": 500,
+    "image": "img/phones/apple-iphone-7-plus/black/00.webp",
+    "history": [
+      {
+        "date": "2020-01-05",
+        "customerId": "11091700",
+        "amount": 2
+      }
+    ]
+  },
+  { 
+    "id": 3,
+    "name": "Apple iPhone 8 64GB Gold",
+    "fullPrice": 600,
+    "price": 550,
+    "image": "img/phones/apple-iphone-8/gold/00.webp",
+    "date": "2020-01-05",
+    "customerId": "11091700",
+    "amount": 3
+  },
+  {
+    "id": 4,
+    "name": "Apple iPhone 11 64GB Black",
+    "fullPrice": 932,
+    "price": 880,
+    "image": "img/phones/apple-iphone-11/black/00.webp",
+    "date": "2020-01-05",
+    "customerId": "11091700",
+    "amount": 3
+  }
+]
