@@ -1,24 +1,24 @@
 // ** MUI Imports
-import { PaletteMode } from '@mui/material'
+import { PaletteMode } from '@mui/material';
 
 // ** Types
-import { ContentWidth } from 'src/@core/layouts/types'
+import { ContentWidth } from 'src/@core/layouts/types';
 
 type ThemeConfig = {
-  mode: PaletteMode
-  templateName: string
-  routingLoader: boolean
-  disableRipple: boolean
-  navigationSize: number
-  menuTextTruncate: boolean
-  contentWidth: ContentWidth
-  responsiveFontSizes: boolean
-}
+  mode: PaletteMode;
+  templateName: string;
+  routingLoader: boolean;
+  disableRipple: boolean;
+  navigationSize: number;
+  menuTextTruncate: boolean;
+  contentWidth: ContentWidth;
+  responsiveFontSizes: boolean;
+};
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
-  templateName: 'Materio' /* App Name */,
-  mode: 'light' /* light | dark */,
+  templateName: 'Nice-gadgets' /* App Name */,
+  mode: 'dark' /* light | dark */,
   contentWidth: 'boxed' /* full | boxed */,
 
   // ** Routing Configs
@@ -30,7 +30,7 @@ const themeConfig: ThemeConfig = {
 
   // ** Other Configs
   responsiveFontSizes: true /* true | false */,
-  disableRipple: false /* true | false */
-}
+  disableRipple: false /* true | false */,
+};
 
-export default themeConfig
+export default themeConfig;
