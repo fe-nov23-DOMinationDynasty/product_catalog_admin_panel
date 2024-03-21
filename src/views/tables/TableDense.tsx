@@ -1,6 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-// ** MUI Imports
-
 import { useState, useEffect } from 'react';
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
@@ -15,7 +12,7 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 // import Typography from '@mui/material/Typography';
 // import IconButton from '@mui/material/IconButton';
 
-// // ** Icons Imports
+// ** Icons Imports
 // import ChevronUp from 'mdi-material-ui/ChevronUp';
 // import ChevronDown from 'mdi-material-ui/ChevronDown';
 
@@ -31,7 +28,7 @@ interface Product {
       customerId: string;
       amount: number;
     },
-  ]
+  ];
 }
 
 export function request(product: string) {
@@ -85,78 +82,3 @@ export default function DataTable() {
     </div>
   );
 }
-
-// export const Row = (props: { row: Product }) => {
-//   // ** Props
-//   const { row } = props;
-
-//   // ** State
-//   const [open, setOpen] = useState<boolean>(false);
-
-//   return (
-//     <Fragment>
-//       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-//         <TableCell>
-//           <IconButton
-//             aria-label="expand row"
-//             size="small"
-//             onClick={() => setOpen(!open)}>
-//             {open ? <ChevronUp /> : <ChevronDown />}
-//           </IconButton>
-//         </TableCell>
-//         <TableCell component="th" scope="row">
-//           {row.name}
-//         </TableCell>
-//         <TableCell align="right">{row.fullPrice}</TableCell>
-//         <TableCell align="right">{row.price}</TableCell>
-//         <TableCell align="right">
-//           <img src={row.image} alt={row.name} style={{ width: '50px' }} />
-//         </TableCell>
-//       </TableRow>
-
-//       <TableRow>
-//         <TableCell colSpan={6} sx={{ py: '0 !important' }}>
-//           <Collapse in={open} timeout="auto" unmountOnExit>
-//             <Box sx={{ m: 2 }}>
-//               <Typography variant="h6" gutterBottom component="div">
-//                 Specs
-//               </Typography>
-//               <Table size="small" aria-label="purchases">
-//                 <TableHead>
-//                   <TableRow>
-//                     <TableCell>Date</TableCell>
-//                     <TableCell>Customer</TableCell>
-//                     <TableCell align="right">Amount</TableCell>
-//                     <TableCell align="right">Total price ($)</TableCell>
-//                   </TableRow>
-//                 </TableHead>
-//                 <TableBody>
-//                   {row.history ? ( // Check if row.history exists
-//                     row.history.map((historyRow) => (
-//                       <TableRow key={historyRow.date}>
-//                         <TableCell component="th" scope="row">
-//                           {historyRow.date}
-//                         </TableCell>
-//                         <TableCell>{historyRow.customerId}</TableCell>
-//                         <TableCell align="right">{historyRow.amount}</TableCell>
-//                         <TableCell align="right">
-//                           {Math.round(historyRow.amount * row.price * 100) / 100}
-//                         </TableCell>
-//                       </TableRow>
-//                     ))
-//                   ) : (
-//                     <TableRow>
-//                       <TableCell colSpan={4} align="center">
-//                         No history available
-//                       </TableCell>
-//                     </TableRow>
-//                   )}
-//                 </TableBody>
-//               </Table>
-//             </Box>
-//           </Collapse>
-//         </TableCell>
-//       </TableRow>
-//     </Fragment>
-//   );
-// };
