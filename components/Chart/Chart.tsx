@@ -7,7 +7,7 @@ import Title from '../Title/Title';
 // Generate Sales Data
 function createData(
   time: string,
-  amount?: number,
+  amount?: number
 ): { time: string; amount: number | null } {
   return { time, amount: amount ?? null };
 }
@@ -67,8 +67,12 @@ export default function Chart() {
             },
           ]}
           sx={{
-            [`.${axisClasses.root} line`]: { stroke: theme.palette.text.secondary },
-            [`.${axisClasses.root} text`]: { fill: theme.palette.text.secondary },
+            [`.${axisClasses.root} line`]: {
+              stroke: theme.palette.text.secondary,
+            },
+            [`.${axisClasses.root} text`]: {
+              fill: theme.palette.text.secondary,
+            },
             [`& .${axisClasses.left} .${axisClasses.label}`]: {
               transform: 'translateX(-25px)',
             },

@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+}
+
+model Product {
+  id            String      @id @default(uuid())
+  productInfoId String
+  category      String
+  name          String
+  fullPrice     Int
+  price         Int
+  screen        String
+  capacity      String
+  color         String
+  ram           String
+  year          Int
+  image         String
+  productInfo   ProductInfo @relation(fields: [productInfoId], references: [id], onDelete: Cascade)
+}
+
+model Promo {
+  id    String @id @default(uuid())
+  image String
+  link  String
+}
+
+model ProductInfo {
+  id                String        @id @default(uuid())
+  namespaceId       String
+  name              String
+  capacityAvailable String[]
+  capacity          String
+  priceRegular      Int
+  priceDiscount     Int
+  colorsAvailable   String[]
+  color             String
+  images            String[]
+  description       Description[]
+  screen            String
+  resolution        String
+  processor         String
+  ram               String
+  camera            String?
+  zoom              String?
+  cell              String[]
+  Product           Product[]
+}
+
+model Description {
+  id            String       @id @default(uuid())
+  productInfoId String?
+  ProductInfo   ProductInfo? @relation(fields: [productInfoId], references: [id])
+  title         String
+  text          String[]
+}

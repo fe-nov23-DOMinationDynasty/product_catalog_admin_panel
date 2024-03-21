@@ -1,0 +1,5 @@
+[
+  {"image": "./promos/banner-phones.webp", "link": "phones"},
+  {"image": "./promos/banner-tablets.webp", "link": "tablets"},
+  {"image": "./promos/banner-accessories.webp", "link": "accessories"}
+]
