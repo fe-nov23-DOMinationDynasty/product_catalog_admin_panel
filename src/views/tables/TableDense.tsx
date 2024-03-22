@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowId } from '@mui/x-data-grid';
 
 // import Box from '@mui/material/Box';
 // import Table from '@mui/material/Table';
@@ -16,7 +16,7 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 // import ChevronUp from 'mdi-material-ui/ChevronUp';
 // import ChevronDown from 'mdi-material-ui/ChevronDown';
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   fullPrice: number;
@@ -57,7 +57,19 @@ const columns: GridColDef[] = [
   },
 ];
 
-export default function DataTable() {
+export interface DataTableProps {
+  setSelectedRows: (selectionModel: Product[]) => void;
+  onRowSelectionChange: (selected: Product[]) => void;
+}
+
+export const DataTable: React.FC<DataTableProps> = ({ setSelectedRows }) => {
+  const handleSelectionModelChange = (selectionModel: GridRowId[]) => {
+    const selectedProducts = selectionModel.map((id: GridRowId) =>
+      products.find((product) => product.id === parseInt(id as string, 10))
+    );
+    setSelectedRows(selectedProducts as Product[]);
+  };
+
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -78,6 +90,8 @@ export default function DataTable() {
         }}
         pageSizeOptions={[5, 10]}
         checkboxSelection
+        rowSelection
+        onRowSelectionModelChange={handleSelectionModelChange}
       />
     </div>
   );
