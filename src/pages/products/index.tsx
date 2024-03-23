@@ -10,7 +10,7 @@ import DevicesOtherIcon from '@mui/icons-material/DevicesOther';
 // ** Demo Components Imports
 import { DataTable, Product } from 'src/views/tables/TableDense';
 import { useState } from 'react';
-import { Box, IconButton, Modal } from '@mui/material';
+import { Box, IconButton, Modal, TextField } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -46,6 +46,7 @@ const MUITable = () => {
           Use the table below to view and manage your products
         </Typography>
       </Grid>
+
       <Grid item xs={12}>
         <Card>
           <CardHeader
@@ -65,19 +66,23 @@ const MUITable = () => {
           />
         </Card>
       </Grid>
+
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-            Selected Rows
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Edit Products
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {selectedRows.map((row) => (
-              <div key={row.id}>
-                ID: {row.id}, Name: {row.name}, Full Price: {row.fullPrice}, Price: {row.price}
+            {selectedRows.map(({ id, name, fullPrice, price }) => (
+              <div key={id}>
+                <TextField label={id} fullWidth margin="normal" />
+                <TextField label={name} fullWidth margin="normal" />
+                <TextField label={fullPrice} fullWidth margin="normal" />
+                <TextField label={price} fullWidth margin="normal" />
               </div>
             ))}
           </Typography>
