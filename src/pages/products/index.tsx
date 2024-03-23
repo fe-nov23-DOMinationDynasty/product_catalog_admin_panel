@@ -71,13 +71,14 @@ const MUITable = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
             Selected Rows
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {selectedRows.map((row) => (
               <div key={row.id}>
-                ID: {row.id}, Name: {row.name}, Full Price: {row.fullPrice}, Price: {row.price}
+                ID: {row.id}, Name: {row.name}, Full Price: {row.fullPrice},
+                Price: {row.price}
               </div>
             ))}
           </Typography>

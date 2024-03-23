@@ -28,7 +28,7 @@ interface Product {
       customerId: string;
       amount: number;
     },
-  ]
+  ];
 }
 
 export function request(product: string) {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // ** Icon imports
 import Login from 'mdi-material-ui/Login';
 import Table from 'mdi-material-ui/Table';
@@ -15,17 +16,17 @@ const navigation = (): VerticalNavItemsType => {
   return [
     {
       title: 'Dashboard',
-      icon: HomeOutline,
+      icon: HomeOutline as any,
       path: '/',
     },
     {
       title: 'Products',
-      icon: CartOutline,
+      icon: CartOutline as any,
       path: '/products',
     },
     {
       title: 'Account Settings',
-      icon: AccountCogOutline,
+      icon: AccountCogOutline as any,
       path: '/account-settings',
     },
     {
@@ -33,19 +34,19 @@ const navigation = (): VerticalNavItemsType => {
     },
     {
       title: 'Login',
-      icon: Login,
+      icon: Login as any,
       path: '/pages/login',
       openInNewTab: true,
     },
     {
       title: 'Register',
-      icon: AccountPlusOutline,
+      icon: AccountPlusOutline as any,
       path: '/pages/register',
       openInNewTab: true,
     },
     {
       title: 'Error',
-      icon: AlertCircleOutline,
+      icon: AlertCircleOutline as any,
       path: '/pages/error',
       openInNewTab: true,
     },
@@ -54,12 +55,12 @@ const navigation = (): VerticalNavItemsType => {
     },
     {
       title: 'Tables',
-      icon: Table,
+      icon: Table as any,
       path: '/tables',
     },
     {
       title: 'Form Layouts',
-      icon: CubeOutline,
+      icon: CubeOutline as any,
       path: '/form-layouts',
     },
   ];

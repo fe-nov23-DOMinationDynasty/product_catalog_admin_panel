@@ -37,7 +37,7 @@
   "include": [
     "src",
     ".next/types/**/*.ts"
-  ],
+, "src/types"  ],
   "exclude": [
     "node_modules"
   ]

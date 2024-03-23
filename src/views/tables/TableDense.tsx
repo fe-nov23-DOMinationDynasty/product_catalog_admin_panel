@@ -95,4 +95,4 @@ export const DataTable: React.FC<DataTableProps> = ({ setSelectedRows }) => {
       />
     </div>
   );
-}
+};
