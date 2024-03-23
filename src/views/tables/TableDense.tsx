@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 
 import {
   DataGrid,
-  GridActionsCellItem,
   GridColDef,
+  GridRenderCellParams,
   GridRowId,
 } from '@mui/x-data-grid';
 
-import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { IconButton } from '@mui/material';
 
 export interface Product {
   id: number;
@@ -37,31 +37,18 @@ export const getProducts = () => {
   return request('products');
 };
 
-const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', type: 'string', flex: 1 },
-  { field: 'category', headerName: 'Category', type: 'string', flex: 2 },
-  { field: 'name', headerName: 'Product', type: 'string', flex: 3 },
-  { field: 'fullPrice', headerName: 'Price', type: 'string', flex: 2 },
-  { field: 'price', headerName: 'Sell price', type: 'string', flex: 2 },
-  { field: 'year', headerName: 'Year', type: 'string', flex: 2 },
-  {
-    field: 'actions',
-    headerName: 'Actions',
-    type: 'actions',
-    flex: 1,
-    getActions: () => [
-      <GridActionsCellItem key="edit" icon={<EditIcon />} label="Edit" />,
-      <GridActionsCellItem key="delete" icon={<DeleteIcon />} label="Delete" />,
-    ],
-  },
-];
-
 export interface DataTableProps {
   setSelectedRows: (selectionModel: Product[]) => void;
+  setSelectedRow: (selectionModel: Product) => void;
   onRowSelectionChange: (selected: Product[]) => void;
+  openModal: () => void;
 }
 
-export const DataTable: React.FC<DataTableProps> = ({ setSelectedRows }) => {
+export const DataTable: React.FC<DataTableProps> = ({
+  setSelectedRows,
+  setSelectedRow,
+  openModal,
+}) => {
   const handleSelectionModelChange = (selectionModel: GridRowId[]) => {
     const selectedProducts = selectionModel.map((id: GridRowId) =>
       products.find((product) => product.id === parseInt(id as string, 10))
@@ -76,6 +63,32 @@ export const DataTable: React.FC<DataTableProps> = ({ setSelectedRows }) => {
       .then((data: Product[]) => setProducts(data))
       .catch((error) => console.error('Error fetching products:', error));
   }, []);
+
+  const columns: GridColDef[] = [
+    { field: 'id', headerName: 'ID', type: 'string', flex: 1 },
+    { field: 'category', headerName: 'Category', type: 'string', flex: 2 },
+    { field: 'name', headerName: 'Product', type: 'string', flex: 3 },
+    { field: 'fullPrice', headerName: 'Price', type: 'string', flex: 2 },
+    { field: 'price', headerName: 'Sell price', type: 'string', flex: 2 },
+    { field: 'year', headerName: 'Year', type: 'string', flex: 2 },
+    {
+      field: 'actions',
+      headerName: 'Actions',
+      type: 'actions',
+      flex: 1,
+      renderCell: (params: GridRenderCellParams) => (
+        <IconButton
+          onClick={(event) => {
+            event.stopPropagation();
+            setSelectedRow(params.row);
+            openModal();
+          }}
+        >
+          <EditIcon />
+        </IconButton>
+      ),
+    },
+  ];
 
   return (
     <div style={{ height: '65vh', width: '100%' }}>
