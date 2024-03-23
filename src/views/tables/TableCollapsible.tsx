@@ -28,11 +28,11 @@ interface Product {
   image: string;
   history: [
     {
-      date: string,
-      customerId: string,
-      amount: number
+      date: string;
+      customerId: string;
+      amount: number;
     },
-  ]
+  ];
 }
 
 export function request(product: string) {
@@ -48,7 +48,6 @@ export const getProducts = () => {
 };
 
 const Row = (props: { row: Product }) => {
-
   // ** Props
   const { row } = props;
 
@@ -73,7 +72,7 @@ const Row = (props: { row: Product }) => {
         <TableCell align="right">{row.price}</TableCell>
         <TableCell align="right">
           <img src={row.image} alt={row.name} style={{ width: '50px' }} />
-        </TableCell>    
+        </TableCell>
       </TableRow>
 
       <TableRow>
@@ -102,7 +101,8 @@ const Row = (props: { row: Product }) => {
                         <TableCell>{historyRow.customerId}</TableCell>
                         <TableCell align="right">{historyRow.amount}</TableCell>
                         <TableCell align="right">
-                          {Math.round(historyRow.amount * row.price * 100) / 100}
+                          {Math.round(historyRow.amount * row.price * 100) /
+                            100}
                         </TableCell>
                       </TableRow>
                     ))

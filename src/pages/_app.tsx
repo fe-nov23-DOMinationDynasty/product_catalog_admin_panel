@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // ** Next Imports
 import Head from 'next/head';
 import { Router } from 'next/router';
@@ -61,7 +62,8 @@ const App = (props: ExtendedAppProps) => {
 
   // Variables
   const getLayout =
-    Component.getLayout ?? ((page) => <UserLayout>{page}</UserLayout>);
+    (Component as any).getLayout ??
+    ((page: any) => <UserLayout>{page}</UserLayout>);
 
   return (
     <CacheProvider value={emotionCache}>

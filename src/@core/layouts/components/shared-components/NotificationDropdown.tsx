@@ -18,6 +18,7 @@ import BellOutline from 'mdi-material-ui/BellOutline';
 
 // ** Third Party Components
 import PerfectScrollbarComponent from 'react-perfect-scrollbar';
+import Image from 'next/image';
 
 // ** Styled Menu component
 const Menu = styled(MuiMenu)<MenuProps>(({ theme }) => ({
@@ -217,7 +218,7 @@ const NotificationDropdown = () => {
           </MenuItem>
           <MenuItem onClick={handleDropdownClose}>
             <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-              <img
+              <Image
                 width={38}
                 height={38}
                 alt="paypal"
@@ -264,7 +265,7 @@ const NotificationDropdown = () => {
           </MenuItem>
           <MenuItem onClick={handleDropdownClose}>
             <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-              <img
+              <Image
                 width={38}
                 height={38}
                 alt="chart"

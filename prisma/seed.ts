@@ -1,4 +1,4 @@
-import prisma from '@/utils/db';
+import prisma from '../utils/db';
 import { readFileSync } from 'fs';
 import path from 'path';
 
