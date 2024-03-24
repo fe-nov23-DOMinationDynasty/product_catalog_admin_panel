@@ -1,34 +1,28 @@
 import { useState, useEffect } from 'react';
 
-import { DataGrid, GridColDef, GridRowId } from '@mui/x-data-grid';
+import {
+  DataGrid,
+  GridColDef,
+  GridRenderCellParams,
+  GridRowId,
+} from '@mui/x-data-grid';
 
-// import Box from '@mui/material/Box';
-// import Table from '@mui/material/Table';
-// import Collapse from '@mui/material/Collapse';
-// import TableRow from '@mui/material/TableRow';
-// import TableHead from '@mui/material/TableHead';
-// import TableBody from '@mui/material/TableBody';
-// import TableCell from '@mui/material/TableCell';
-// import Typography from '@mui/material/Typography';
-// import IconButton from '@mui/material/IconButton';
-
-// ** Icons Imports
-// import ChevronUp from 'mdi-material-ui/ChevronUp';
-// import ChevronDown from 'mdi-material-ui/ChevronDown';
+import EditIcon from '@mui/icons-material/Edit';
+import { IconButton } from '@mui/material';
 
 export interface Product {
   id: number;
+  category: string;
+  itemId: string;
   name: string;
   fullPrice: number;
   price: number;
+  screen: string;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
   image: string;
-  history: [
-    {
-      date: string;
-      customerId: string;
-      amount: number;
-    },
-  ];
 }
 
 export function request(product: string) {
@@ -43,26 +37,18 @@ export const getProducts = () => {
   return request('products');
 };
 
-const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', type: 'number', width: 70 },
-  { field: 'name', headerName: 'Product', type: 'string', width: 180 },
-  { field: 'fullPrice', headerName: 'fullPrice', type: 'number', width: 130 },
-  { field: 'price', headerName: 'price', type: 'number', width: 100 },
-  {
-    field: 'image',
-    headerName: 'Image',
-    description: 'This column has a image and is not sortable.',
-    sortable: false,
-    width: 130,
-  },
-];
-
 export interface DataTableProps {
   setSelectedRows: (selectionModel: Product[]) => void;
+  setSelectedRow: (selectionModel: Product) => void;
   onRowSelectionChange: (selected: Product[]) => void;
+  openModal: () => void;
 }
 
-export const DataTable: React.FC<DataTableProps> = ({ setSelectedRows }) => {
+export const DataTable: React.FC<DataTableProps> = ({
+  setSelectedRows,
+  setSelectedRow,
+  openModal,
+}) => {
   const handleSelectionModelChange = (selectionModel: GridRowId[]) => {
     const selectedProducts = selectionModel.map((id: GridRowId) =>
       products.find((product) => product.id === parseInt(id as string, 10))
@@ -78,19 +64,46 @@ export const DataTable: React.FC<DataTableProps> = ({ setSelectedRows }) => {
       .catch((error) => console.error('Error fetching products:', error));
   }, []);
 
+  const columns: GridColDef[] = [
+    { field: 'id', headerName: 'ID', type: 'string', flex: 1 },
+    { field: 'category', headerName: 'Category', type: 'string', flex: 2 },
+    { field: 'name', headerName: 'Product', type: 'string', flex: 3 },
+    { field: 'fullPrice', headerName: 'Price', type: 'string', flex: 2 },
+    { field: 'price', headerName: 'Sell price', type: 'string', flex: 2 },
+    { field: 'year', headerName: 'Year', type: 'string', flex: 2 },
+    {
+      field: 'actions',
+      headerName: 'Actions',
+      type: 'actions',
+      flex: 1,
+      renderCell: (params: GridRenderCellParams) => (
+        <IconButton
+          onClick={(event) => {
+            event.stopPropagation();
+            setSelectedRow(params.row);
+            openModal();
+          }}
+        >
+          <EditIcon />
+        </IconButton>
+      ),
+    },
+  ];
+
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: '65vh', width: '100%' }}>
       <DataGrid
         rows={products}
         columns={columns}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
+            paginationModel: { page: 0, pageSize: 10 },
           },
         }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[10, 20, 30, 40, 50]}
         checkboxSelection
         rowSelection
+        disableRowSelectionOnClick
         onRowSelectionModelChange={handleSelectionModelChange}
       />
     </div>
