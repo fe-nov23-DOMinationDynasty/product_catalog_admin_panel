@@ -89,7 +89,7 @@ const MUITable = () => {
             action={
               <>
                 <Tooltip title="Delete">
-                  <IconButton>
+                  <IconButton disabled={!selectedRows.length ? true : false}>
                     <DeleteIcon />
                   </IconButton>
                 </Tooltip>

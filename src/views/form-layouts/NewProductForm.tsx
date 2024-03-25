@@ -191,7 +191,6 @@ export const NewProductForm: React.FC<NewProductFormProps> = ({ open, onClose })
             </Select>
           </FormControl>
         </Grid>
-        {/* ... Other Selects */}
 
         {/* ... (Image Upload - See Advanced Features) */}
 
@@ -211,7 +210,6 @@ export const NewProductForm: React.FC<NewProductFormProps> = ({ open, onClose })
             </AccordionDetails>
           </Accordion>
         </Grid>
-        {/* ... Other Fields */}
 
         <Grid item xs={12}>
           <Button variant="contained" type="submit">
