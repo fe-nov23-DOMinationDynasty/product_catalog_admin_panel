@@ -90,7 +90,7 @@ export const DataTable: React.FC<DataTableProps> = ({
   ];
 
   return (
-    <div style={{ height: '65vh', width: '100%' }}>
+    <div style={{ width: '100%' }}>
       <DataGrid
         rows={products}
         columns={columns}

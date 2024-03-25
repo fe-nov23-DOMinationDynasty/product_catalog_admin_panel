@@ -24,6 +24,7 @@ import {
   styled,
 } from '@mui/material';
 import { purple } from '@mui/material/colors';
+import { NewProductForm } from 'src/views/form-layouts/NewProductForm';
 
 const style = {
   position: 'absolute',
@@ -49,8 +50,18 @@ const MUITable = () => {
   const [selectedRows, setSelectedRows] = useState<Product[]>([]);
   const [selectedRow, setSelectedRow] = useState<Product | null>(null);
   const [open, setOpen] = useState(false);
+  const [openNewProductForm, setOpenNewProductForm] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleOpenNewProductForm = () => {
+    setOpenNewProductForm(true);
+  };
+
+  const handleCloseNewProductForm = () => {
+    setOpenNewProductForm(false);
+  };
 
   const handleRowSelectionChange = (selected: Product[]) => {
     setSelectedRows(selected);
@@ -78,16 +89,17 @@ const MUITable = () => {
             action={
               <>
                 <Tooltip title="Delete">
-                  <IconButton>
+                  <IconButton disabled={!selectedRows.length ? true : false}>
                     <DeleteIcon />
                   </IconButton>
                 </Tooltip>
                 <Tooltip describeChild title="Add new product">
-                  <Button>Add</Button>
+                  <Button onClick={handleOpenNewProductForm}>Add</Button>
                 </Tooltip>
               </>
             }
           />
+
           <DataTable
             setSelectedRows={setSelectedRows}
             setSelectedRow={setSelectedRow}
@@ -110,12 +122,12 @@ const MUITable = () => {
             </IconButton>
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <TextField label={selectedRow?.id} fullWidth margin="normal" />
-            <TextField label={selectedRow?.category} fullWidth margin="normal" />
-            <TextField label={selectedRow?.name} fullWidth margin="normal" />
-            <TextField label={selectedRow?.fullPrice} fullWidth margin="normal" />
-            <TextField label={selectedRow?.price} fullWidth margin="normal" />
-            <TextField label={selectedRow?.year} fullWidth margin="normal" />
+            <TextField label="ID" fullWidth margin="normal" defaultValue={selectedRow?.id} disabled />
+            <TextField label="Category" fullWidth margin="normal" defaultValue={selectedRow?.category} />
+            <TextField label="Name" fullWidth margin="normal" defaultValue={selectedRow?.name} />
+            <TextField label="Sale Price" fullWidth margin="normal" defaultValue={selectedRow?.fullPrice} />
+            <TextField label="Price" fullWidth margin="normal" defaultValue={selectedRow?.price} />
+            <TextField label="Year" fullWidth margin="normal" defaultValue={selectedRow?.year} />
             <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
               <Button type="button" onClick={handleClose} sx={{ mr: 1 }}>
                 Cancel
@@ -127,6 +139,8 @@ const MUITable = () => {
           </Typography>
         </Box>
       </Modal>
+
+      <NewProductForm open={openNewProductForm} onClose={handleCloseNewProductForm} />
     </Grid>
   );
 };
