@@ -8,6 +8,7 @@ import AccountCogOutline from 'mdi-material-ui/AccountCogOutline';
 import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline';
 import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline';
 import CartOutline from 'mdi-material-ui/CartOutline';
+import PeopleIcon from '@mui/icons-material/People';
 
 // ** Type import
 import { VerticalNavItemsType } from 'src/@core/layouts/types';
@@ -23,6 +24,11 @@ const navigation = (): VerticalNavItemsType => {
       title: 'Products',
       icon: CartOutline as any,
       path: '/products',
+    },
+    {
+      title: 'Users',
+      icon: PeopleIcon as any,
+      path: '/users',
     },
     {
       title: 'Account Settings',

@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "John",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "name": "Mason",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 3,
+    "name": "Martin",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 4,
+    "name": "Chris",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 5,
+    "name": "Ivan",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 6,
+    "name": "Max",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 7,
+    "name": "Sanya",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 8,
+    "name": "John",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 9,
+    "name": "Mason",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 10,
+    "name": "Martin",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 11,
+    "name": "Chris",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 12,
+    "name": "Ivan",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 13,
+    "name": "Max",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 14,
+    "name": "Sanya",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 15,
+    "name": "John",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 16,
+    "name": "Mason",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 17,
+    "name": "Martin",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 18,
+    "name": "Chris",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 19,
+    "name": "Ivan",
+    "email": "manwaasup@gmail.com",
+    "role": "basic user"
+  },
+  {
+    "id": 20,
+    "name": "Max",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  },
+  {
+    "id": 21,
+    "name": "Sanya",
+    "email": "manwaasup@gmail.com",
+    "role": "admin"
+  }
+]
