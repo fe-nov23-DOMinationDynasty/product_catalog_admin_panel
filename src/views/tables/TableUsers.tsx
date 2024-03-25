@@ -8,25 +8,18 @@ import {
 } from '@mui/x-data-grid';
 
 import EditIcon from '@mui/icons-material/Edit';
-import { IconButton } from '@mui/material';
+import { Avatar, IconButton } from '@mui/material';
 
-export interface Product {
+export interface User {
   id: number;
-  category: string;
-  itemId: string;
   name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
+  email: string;
   image: string;
+  role: string;
 }
 
-export function request(product: string) {
-  return fetch(`../api/${product}.json`)
+export function request(user: string) {
+  return fetch(`../api/${user}.json`)
     .then((res) => res.json())
     .then((data) => {
       return data;
@@ -34,13 +27,13 @@ export function request(product: string) {
 }
 
 export const getProducts = () => {
-  return request('products');
+  return request('users');
 };
 
 export interface DataTableProps {
-  setSelectedRows: (selectionModel: Product[]) => void;
-  setSelectedRow: (selectionModel: Product) => void;
-  onRowSelectionChange: (selected: Product[]) => void;
+  setSelectedRows: (selectionModel: User[]) => void;
+  setSelectedRow: (selectionModel: User) => void;
+  onRowSelectionChange: (selected: User[]) => void;
   openModal: () => void;
 }
 
@@ -50,27 +43,41 @@ export const DataTable: React.FC<DataTableProps> = ({
   openModal,
 }) => {
   const handleSelectionModelChange = (selectionModel: GridRowId[]) => {
-    const selectedProducts = selectionModel.map((id: GridRowId) =>
-      products.find((product) => product.id === parseInt(id as string, 10))
+    const selectedUsers = selectionModel.map((id: GridRowId) =>
+      users.find((user) => user.id === parseInt(id as string, 10))
     );
-    setSelectedRows(selectedProducts as Product[]);
+    setSelectedRows(selectedUsers as User[]);
   };
 
-  const [products, setProducts] = useState<Product[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     getProducts()
-      .then((data: Product[]) => setProducts(data))
+      .then((data: User[]) => setUsers(data))
       .catch((error) => console.error('Error fetching products:', error));
   }, []);
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', type: 'string', flex: 1 },
-    { field: 'category', headerName: 'Category', type: 'string', flex: 2 },
-    { field: 'name', headerName: 'Product', type: 'string', flex: 3 },
-    { field: 'fullPrice', headerName: 'Price', type: 'string', flex: 2 },
-    { field: 'price', headerName: 'Sell price', type: 'string', flex: 2 },
-    { field: 'year', headerName: 'Year', type: 'string', flex: 2 },
+    {
+      field: 'photoURL',
+      headerName: 'Photo',
+      type: 'string',
+      renderCell: (params) => <Avatar src={params.row.photoURL} />,
+      sortable: false,
+      filterable: false,
+      flex: 1,
+    },
+    { field: 'name', headerName: 'Name', type: 'string', flex: 3 },
+    { field: 'email', headerName: 'Email', type: 'string', flex: 2 },
+    {
+      field: 'role',
+      headerName: 'Role',
+      type: 'singleSelect',
+      valueOptions: ['basic user', 'moderator', 'admin'],
+      editable: true,
+      flex: 2,
+    },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -92,7 +99,7 @@ export const DataTable: React.FC<DataTableProps> = ({
   return (
     <div style={{ height: '65vh', width: '100%' }}>
       <DataGrid
-        rows={products}
+        rows={users}
         columns={columns}
         initialState={{
           pagination: {
